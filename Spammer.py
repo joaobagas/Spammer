@@ -1,18 +1,24 @@
 import requests
 import os
 import json
-import random
 
 url = 'https://curiouscat.qa/api/v2/post/create'
 
-questions = json.loads(open('StupidQuestions.json').read)
+questions = json.loads(open('StupidQuestions.json').read())
+print("Json file loaded...")
 
-for quetion in questions:
-    request.post(url, allow_redirects=False, data = {
-        'to': '' #Insert username here
-        'anon': 'true'
-        'question': question
-        'in_response_to': 'undefined'
+username = input("Insert the username you want to spam here >> ")
+
+print("Spam started...")
+
+for question in questions:
+    requests.post(url, allow_redirects=False, data = {
+        'to': username,
+        'anon': 'true',
+        'question': question,
+        'in_response_to': 'undefined',
         '_ob': 'registerOrSignin'
     })
+    
+print("Spam finished...")
     
